@@ -29,8 +29,12 @@ Bun.serve({
           )
         }
 
-        if (searchParams.secret !== env.TNOODLE_SECRET)
+        if (searchParams.secret !== env.TNOODLE_SECRET) {
+          console.error(
+            `Incorrect secret. Expected: "${env.TNOODLE_SECRET}" Received: "${searchParams.secret}"`,
+          )
           return new Response('Incorrect secret.', { status: 401 })
+        }
 
         console.log(
           `Generating ${searchParams.count} scrambles for ${searchParams.discipline}...`,
