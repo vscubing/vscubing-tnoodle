@@ -5,6 +5,7 @@ import {
   tnoodleCliVersion,
 } from './generate-scrambles'
 
+// TODO: auth by secret token?
 console.log(`${tnoodleCliVersion} started`)
 Bun.serve({
   routes: {
