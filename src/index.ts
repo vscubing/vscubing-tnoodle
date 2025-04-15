@@ -4,8 +4,8 @@ import {
   generateScrambles,
   tnoodleCliVersion,
 } from './generate-scrambles'
+import { env } from '../lib/env'
 
-// TODO: auth by secret token?
 console.log(`${tnoodleCliVersion} started`)
 Bun.serve({
   routes: {
@@ -17,12 +17,10 @@ Bun.serve({
         const { data: searchParams, error: searchParamsError } = z
           .object({
             discipline: z.enum(DISCIPLINES),
-            count: z.preprocess((v) => Number(v), z.number().positive()),
+            count: z.preprocess((v) => Number(v), z.literal(7)),
+            secret: z.string(),
           })
-          .safeParse({
-            discipline: rawSearchParams.get('discipline'),
-            count: rawSearchParams.get('count'),
-          })
+          .safeParse(Object.fromEntries(rawSearchParams.entries()))
         if (searchParamsError) {
           console.error('Invalid search params:\n' + searchParamsError.message)
           return new Response(
@@ -31,6 +29,12 @@ Bun.serve({
           )
         }
 
+        if (searchParams.secret !== env.TNOODLE_SECRET)
+          return new Response('Incorrect secret.', { status: 401 })
+
+        console.log(
+          `Generating ${searchParams.count} scrambles for ${searchParams.discipline}...`,
+        )
         const scrambles = z
           .array(z.string())
           .length(searchParams.count)

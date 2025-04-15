@@ -18,6 +18,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@t3-oss/env-core": "^0.12.0",
     "@vscubing/cubing": "^0.55.0-vscubing.11",
     "zod": "^3.24.2"
   }
