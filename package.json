@@ -1,0 +1,24 @@
+{
+  "name": "vscubing-cron",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch --port 3001 ./src/index.ts",
+    "start": "bun run --port 3001 ./src/index.ts",
+    "test": "bun test --timeout 10000",
+    "install-vendor": "./scripts/install-vendor.sh",
+    "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "^3.5.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@vscubing/cubing": "^0.55.0-vscubing.11",
+    "zod": "^3.24.2"
+  }
+}
