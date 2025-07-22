@@ -8,9 +8,10 @@ export async function generateScrambles(discipline: Discipline, count: number) {
   return data.stdout.toString().trim().split('\n')
 }
 
-export const DISCIPLINES = ['3by3', '2by2'] as const
+export const DISCIPLINES = ['3by3', '2by2', '4by4'] as const
 export type Discipline = (typeof DISCIPLINES)[number]
 const TNOODLE_DISCIPLINE_MAP: Record<Discipline, string> = {
   '3by3': 'three',
   '2by2': 'two',
+  '4by4': 'four',
 } as const

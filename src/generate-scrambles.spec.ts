@@ -21,3 +21,13 @@ test('generates 2x2 scrambles correctly', async () => {
     expect(algNodes.length).toBeGreaterThan(5)
   })
 })
+
+test('generates 4x4 scrambles correctly', async () => {
+  const res = await generateScrambles('4by4', 7)
+  expect(res.length).toBe(7)
+
+  res.forEach((scramble) => {
+    const algNodes = Array.from(new Alg(scramble).childAlgNodes())
+    expect(algNodes.length).toBeGreaterThan(5)
+  })
+})
