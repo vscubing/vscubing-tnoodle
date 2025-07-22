@@ -1,6 +1,6 @@
 # vscubing-tnoodle
 
-This repository contains [@vscubing](https://github.com/vscubing)'s microservice that acts as an HTTP wrapper for [tnoodle-cli](https://github.com/SpeedcuberOSS/tnoodle-cli/).
+This repository contains [@vscubing](https://github.com/vscubing)'s microservice that acts as an HTTP wrapper for [tnoodle-cli](https://github.com/SpeedcuberOSS/tnoodle-cli/)
 
 ## API
 - GET :3001/?discipline="3by3"|"2by2"&count=7
